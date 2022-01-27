@@ -4,9 +4,10 @@ document.body.appendChild(s);
 
 
 
-
 /* the bookmark link
     javascript:s=document.createElement("script");s.src="https://matyanson.github.io/text_translator_bookmark/script.js",document.body.appendChild(s);
+    
+    javascript:s=document.createElement("script");s.src="https://cdn.jsdelivr.net/gh/Matyanson/text_translator_bookmark/script.js",document.body.appendChild(s);
 */
 
 /* or use minified code directly as URL
