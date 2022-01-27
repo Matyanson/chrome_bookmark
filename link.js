@@ -1,4 +1,4 @@
-let s = document.createElement('script');
+s = document.createElement('script');
 s.src = 'https://matyanson.github.io/text_translator_bookmark/script.js';
 document.body.appendChild(s);
 
@@ -6,7 +6,7 @@ document.body.appendChild(s);
 
 
 /* the bookmark link
-    javascript:let s=document.createElement("script");s.src="https://matyanson.github.io/text_translator_bookmark/script.js",document.body.appendChild(s);
+    javascript:s=document.createElement("script");s.src="https://matyanson.github.io/text_translator_bookmark/script.js",document.body.appendChild(s);
 */
 
 /* or use minified code directly
