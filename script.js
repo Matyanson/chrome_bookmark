@@ -1,6 +1,7 @@
 mapText(document, (text) => uwufy(text));
 
 function mapText(el, cb) {
+    if(el.tagName == 'SCRIPT' || el.tagName == 'STYLE') return;
     for(let child of el.childNodes) {
         if(child.nodeType == 3)
             child.textContent = cb(child.textContent);
