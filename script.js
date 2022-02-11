@@ -16,8 +16,10 @@ translateFunctions = [
     .replace(/([.!?])/gi, ' nya~$1')
 ]
 
+pathSearch = location.pathname+''+location.search;
 textIndex = 0;
-if(window.pageText == undefined || window.i == undefined) {
+
+if(window.pageText == null || window.i == null) {
     i = 0;
     pageText = [];
 
@@ -30,6 +32,15 @@ else if(i >= 0) mapText(document, (t) => translateFunctions[i](pageText[textInde
 else            mapText(document, (t) => pageText[textIndex++] );
 
 i = i == translateFunctions.length - 1 ? -1 : i + 1;
+
+window.addEventListener('click', () => {
+    setTimeout(() => {
+        if(location.pathname+''+location.search !== pathSearch){
+            pathSearch = location.pathname+''+location.search;
+            pageText = null;
+        }
+    }, 200);
+})
 
 function mapText(el, cb) {
     if(el.tagName == 'SCRIPT' || el.tagName == 'STYLE') return;
