@@ -16,24 +16,20 @@ translateFunctions = [
     .replace(/([.!?])/gi, ' nya~$1')
 ]
 
-
-pageHTML = sessionStorage.getItem('page_html');
-i = Number(sessionStorage.getItem('translation_index'));
-
-if(pageHTML == null) {
+textIndex = 0;
+if(window.pageText == undefined || window.i == undefined) {
     i = 0;
-    pageHTML = document.documentElement.innerHTML;
-    sessionStorage.setItem('translation_index', 0);
-    sessionStorage.setItem('page_html', pageHTML);
+    pageText = [];
+
+    mapText(document, (text) => {
+        pageText.push(text);
+        return translateFunctions[i](text);
+    });
 }
+else if(i >= 0) mapText(document, (t) => translateFunctions[i](pageText[textIndex++]) );
+else            mapText(document, (t) => pageText[textIndex++] );
 
-document.documentElement.innerHTML = pageHTML;
-
-if(i >= 0)
-    mapText(document, (text) => translateFunctions[i](text));
-
-nextI = i == translateFunctions.length - 1 ? -1 : i + 1;
-sessionStorage.setItem('translation_index', nextI);
+i = i == translateFunctions.length - 1 ? -1 : i + 1;
 
 function mapText(el, cb) {
     if(el.tagName == 'SCRIPT' || el.tagName == 'STYLE') return;
